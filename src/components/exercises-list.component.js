@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const Exercise = props => (
     <tr>
         <td>{props.exercise.username}</td>
         <td>{props.exercise.description}</td>
-        <td>{props.exercise.duration}</td>
-        <td>{props.exercise.date.substring(0,10)}</td>
-        <td>
-            <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => {props.deleteExercise(props.exercise._id)}}>delete</a>
+        <td className="text-center">{props.exercise.duration}</td>
+        <td className="text-center">{new Intl.DateTimeFormat('tr-TR', {year: 'numeric', month: '2-digit',day: '2-digit'}).format(new Date(props.exercise.date.substring(0,10)))}</td>
+        <td className="text-center">
+            <Link style={{fontSize: 18}} className="text-info mr-1" to={"/edit/"+props.exercise._id}>
+                <FontAwesomeIcon icon="edit"></FontAwesomeIcon>
+                </Link> | 
+                <a href="#" style={{fontSize: 18}} className="text-danger ml-2" onClick={() => {props.deleteExercise(props.exercise._id)}}>
+                    <FontAwesomeIcon icon="trash"></FontAwesomeIcon>
+                </a>
         </td>
     </tr>
 )
@@ -59,9 +65,9 @@ export default class ExercisesList extends Component{
                         <tr>
                             <th>Username</th>
                             <th>Description</th>
-                            <th>Duration</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th className="text-center">Duration</th>
+                            <th className="text-center">Date</th>
+                            <th className="text-center">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
