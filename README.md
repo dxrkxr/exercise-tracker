@@ -4,7 +4,7 @@ A web application for learning new things. Coded with **freecodecamp**'s YouTube
 
 Before run the app you need the start server with: 
 
-** /mern-exercise-tracker/backend ** 
+**/mern-exercise-tracker/backend** 
 
 ### `nodemon server`
 
